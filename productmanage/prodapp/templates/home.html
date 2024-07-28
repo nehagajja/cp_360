@@ -1,0 +1,35 @@
+<!-- shop/templates/trigger_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Dummy Data</title>
+</head>
+<body>
+    <h1>Generate Dummy Data</h1>
+    <form id="generate-data-form" method="post">
+        {% csrf_token %}
+        <button type="submit">Generate 1000 Products and 100 Categories</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#generate-data-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "trigger_data" %}',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#response').html('Task ID: ' + response.task_id + '. The task is running.');
+                    },
+                    error: function() {
+                        $('#response').html('An error occurred.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
