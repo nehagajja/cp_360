@@ -3,7 +3,7 @@ python 3.12 installed
 Pycharm Community Edition
 Git
 
->>Install Django ,djangorestframework,djangorestframework-simplejwt
+>>Install Django ,djangorestframework,djangorestframework-simplejwt, celery redis, faker
 Using : pip install <package name>
 >>to create a project
 django-admin startproject projectname
@@ -15,4 +15,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
->>
+>>api urls
+->server/admin : admin login
+->server/api/: lists available sub urls
+->server/api/product : to add and view products
+->server/api/categories : to add and view category
+->server/api/export/products/csv : to download products into csv format
+->server/api/token : create token
+->server/api/token/refresh : to refresh the token
+
